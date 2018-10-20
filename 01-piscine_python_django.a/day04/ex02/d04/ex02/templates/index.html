@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>ex02</title>
+	</head>
+	<body>
+		<form method='POST'>
+		{% csrf_token %}
+		{{ form }}
+		<input type='submit' value='Submit'>
+		<ul>
+			{% for item in liste %}
+				<li>{{ item }}</li>
+			{% endfor %}
+		</ul>
+		</form>
+	</body>
+</html>

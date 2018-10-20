@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ex00 : Markdown Cheatsheet.</title>
+  </head>
+  <body style="background-color:powderblue;">
+
+  <div>
+    <h1 style="color:Grey;"><em>Extrait de https://cours-web.ch/divers/markdown/</em></h1>
+    <p>
+      MarkDown est un petit projet lancé en 2004 par le bloggeur
+      <a href="https://fr.wikipedia.org/wiki/John_Gruber" target="_blank">John Gruber</a>.
+      C’est une syntaxe minimale permettant d’écrire du texte pour le web, puis de le convertir en HTML.
+    </p>
+    <p>
+      Elle a été adoptée par des sites comme StackOverflow, Github (pour la rédaction de commentaires, ou dans le README). Depuis 2016, WordPress.com permet d’écrire en MarkDown.
+    </p>
+    <h2 id="gras-italique-souligné">gras, italique, souligné</h2>
+    <p>
+      Pour obtenir du <strong>gras</strong>: entourer le texte de **deux astériques**.
+    </p>
+    <div class="highlighter-rouge">
+      <div class="highlight"><pre class="highlight"><code>*italic*   **bold**
+_italic_   __bold__
+</code></pre>
+</div>
+</div>
+<h2 id="titres-et-séparateurs">titres et séparateurs</h2>
+<div class="highlighter-rouge">
+<div class="highlight"><pre class="highlight"><code>Header 1
+========
+
+Header 2
+--------
+
+# Header 1 #
+
+## Header 2 ##
+
+###### Header 6
+</code></pre></div>
+</div>
+<h2 id="liens-et-images">Liens et images</h2> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>An [example](http://url.com/ "Title")
+
+An [example][id]. Then, anywhere
+else in the doc, define the link:
+
+[id]: http://example.com/  "Title"
+
+![alt text](/path/img.jpg "Title")
+
+![alt text][id]
+
+[id]: /url/to/img.jpg "Title"
+</code></pre></div></div> <h2 id="listes">Listes</h2> <h2 id="blocs-de-code">Blocs de code</h2> <p>Retours de ligne:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Roses are red,
+Violets are blue.
+</code></pre></div></div> <p>Lignes horizontales:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>---
+
+* * *
+
+- - - -
+</code></pre></div></div> <p>Blocs de citation:</p> <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&gt; Email-style angle brackets
+&gt; are used for blockquotes.
+
+&gt; &gt; And, they can be nested.
+
+&gt; #### Headers in blockquotes
+&gt;
+&gt; * You can quote a list.
+&gt; * Etc.
+
+  </body>
+</html>

@@ -1,0 +1,31 @@
+{% extends "ex01/base.html" %}
+
+{% block my_title %}
+	Ex01 : Moteur de template.
+{% endblock %}
+
+{% block my_style %}
+{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'css/ex01/style2.css' %}" />
+{% endblock %}
+
+{% block content %}
+	<h1>/ex01/templates:</h1>
+	<p>
+		Décrivez dans cette page le fonctionnement du moteur de templates par défaut de Django ainsi que le fonctionnement :
+		<ul>
+			<li>
+				Des blocs.
+			</li>
+			<li>
+				Des boucles for ... in.
+			</li>
+			<li>
+				Des structures de contrôle if.
+			</li>
+			<li>
+				De l’affichage de variables passées par contexte.
+			</li>
+		</ul>
+	</p>
+{% endblock %}

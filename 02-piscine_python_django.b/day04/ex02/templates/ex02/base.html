@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>
+      {% block my_title %}
+      Formulaire
+      {% endblock %}
+    </title>
+  </head>
+  <body>
+    <!-- ces 2 balises "block" sont propres au lanagage de django -->
+    <!-- ces 2 balises definissent un block avec NOM = my_content -->
+    <!-- my_content a un contenu par defaut qui pourra etre redefeni -->
+    {% block content %}
+    <h1>This is the base template. C est my_content par defaut.</h1>
+    {% endblock %}
+  </body>
+</html>

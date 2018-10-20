@@ -1,0 +1,22 @@
+#!/bin/sh
+
+echo "============== $> ls"
+ls
+echo "================================================= "
+echo ""
+
+echo "============== creer projet django d04: $> django-admin startproject d04"
+django-admin startproject d04
+echo "================================================= "
+echo ""
+
+echo "============== $> ls"
+ls
+echo "================================================= "
+echo ""
+
+echo "============== $> creer application ex00: ./manage.py startapp ex00"
+./manage.py startapp ex00
+echo "================================================= "
+echo ""
+

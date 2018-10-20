@@ -1,0 +1,10 @@
+{% extends "ex03/base.html" %}
+
+{% block my_content %}
+<h2> j ai herite de la templatedsdssssssss base.html et ai change le block my_content </h2>
+<ul>
+  {% for elt in numbers %}
+    {% include "ex03/number.html" with number=elt %}
+  {% endfor %}
+</ul>
+{% endblock %}

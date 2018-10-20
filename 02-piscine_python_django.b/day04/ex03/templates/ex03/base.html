@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>
+      {% block my_title %}
+      Formuddddddlaire
+      {% endblock %}
+    </title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/ex03/style.css' %}" />
+
+
+  </head>
+  <body>
+    <!-- ces 2 balises "block" sont propres au lanagage de django -->
+    <!-- ces 2 balises definissent un block avec NOM = my_content -->
+    <!-- my_content a un contenu par defaut qui pourra etre redefeni -->
+    {% block my_content %}
+    <h1>Je ne sais pas si cccc est vraiment ce qu ils veulent!!!</h1>
+    {% endblock %}
+
+    <table>
+      <thead>
+        <tr>
+          <th>noir</th>
+          <th>rouge</th>
+          <th>bleu</th>
+          <th>vert</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for elt in numbers %}
+          {% include "ex03/number.html" with number=elt %}
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>

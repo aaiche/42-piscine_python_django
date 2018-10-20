@@ -1,0 +1,64 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+	 .case{
+		position: absolute;
+		left: 287px;
+		top: 52px;
+		width: 448px;
+		height: 448px;
+	}
+{% endblock %}
+
+
+{% block title%}
+<title>{{moviemon.title}}</title>
+{% endblock %}
+
+{% block content%}
+<div class='case'>
+	<ul>
+		<li>
+			<img src="{{moviemon.img}}" width="100"/>
+		</li>
+		<li>
+			Moviemon strength: {{ moviemon.rating }}
+		</li>
+		<li>
+			Movieballs number: {{ game.nb_movieballs }}
+		</li>
+		<li>
+			Player strength: {{ strength }}
+		</li>
+		<li>
+			Probability to catch the moviemon: {{ C }}
+		</li>
+	<ul>
+</div>
+{% endblock %}
+
+{% block control%}
+	{% if A_actif %}
+		A - Launch movieball <br>
+	{% endif %}
+	{% ifequal game.nb_movieballs 0 %}
+		You don't have any movieballs <br>
+	{% endifequal %}
+	B - Back to worldmap
+	{% if not_begin %}
+		{% if is_catched %}
+			<br> You catched it
+		{% else %}
+			<br> You missed!
+		{% endif %}
+	{% endif %}
+{% endblock %}
+
+
+{% block map %}
+	{% if A_actif %}
+		<area shape="circle" coords="639,619,25" href="{% url "battle_A" moviemon.imdbID %}" alt="A">
+	{% endif %}
+	<area shape="circle" coords="576,652,25" href="{% url "worldmap" %}" alt="B">
+{% endblock %}

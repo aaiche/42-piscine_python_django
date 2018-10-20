@@ -1,0 +1,39 @@
+{% extends "game/base.html"  %}
+{% load static %}
+{% block style %}
+     .case{
+        position: absolute;
+        left: 287px;
+        top: 52px;
+        width: 448px;
+        height: 448px;
+    }
+{% endblock %}
+
+{% block title%}
+      <title>Options</title>
+{% endblock %}
+{% block content%}
+<div class='case'>
+    <ul>
+        <li>
+            A - Save
+        </li>
+        <li>
+            B - Quit
+        </li>
+        <li>
+            start - Cancel
+        </li>
+    <ul>
+</div>
+{% endblock %}
+
+{% block control%}
+{% endblock %}
+
+{% block map %}
+    <area shape="circle" coords="639,619,25" href="{% url "save" %}" alt="A">
+    <area shape="circle" coords="576,652,25" href="{% url "init" %}" alt="B">
+    <area shape="rect" coords="484,738,529,780" href="{% url "worldmap" %}" alt="start">
+{% endblock %}

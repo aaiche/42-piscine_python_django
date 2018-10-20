@@ -1,0 +1,23 @@
+{% load static %}
+
+#gameboy {
+	width: 1000px;
+	height: auto;
+}
+
+#gray_screen {
+	position: absolute;
+	left: 287px;
+	top: 52px;
+	width: 448px;
+	height: 450px;
+}
+
+.control {
+	position: absolute;
+	left: 287px;
+	top: 500px;
+	width: 448px;
+	height: 55px;
+	background: url("{% static 'img/gray_screen.jpg' %}") repeat;
+}

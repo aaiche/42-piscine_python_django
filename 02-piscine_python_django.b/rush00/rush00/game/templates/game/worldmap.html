@@ -1,0 +1,69 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+.case{
+position: absolute;
+left: 287px;
+top: 52px;
+width: 448px;
+height: 448px;
+background: url("{% static 'img/mario.png' %}") {{ mario_px_x }}px {{ mario_px_y }}px,
+url("{% static 'img/case.png' %}") ;
+background-repeat: no-repeat, repeat;
+background-size: {{ nb_pixel }}px auto;
+}
+{% endblock %}
+
+{% block title%}
+<title>Worldmap</title>
+{% endblock %}
+
+{% block control%}
+You have {{nb_movieballs}} movieballs <br>
+{% ifequal action 'movieball' %}
+You find a movieball
+{% endifequal %}
+{% ifequal action 'moviemon' %}
+You find a moviemon <br>
+A - Try to catch in movieball
+{% endifequal %}
+{% endblock %}
+
+{% block map %}
+<script>
+window.addEventListener("keydown", function (evemt) {
+	switch(event.key) {
+		case "ArrowLeft":  //left
+			window.location.href ="{% url "left" %}";
+			break;
+
+		case "ArrowUp": // up
+			window.location.href ="{% url "up" %}";
+			break;
+
+		case "ArrowRight": // right
+			window.location.href ="{% url "right" %}";
+			break;
+
+		case "ArrowDown": // down
+			window.location.href ="{% url "down" %}";
+			break;
+
+		default: return; // exit this handler for other keys
+	}
+	e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+</script>
+
+{% ifequal action 'moviemon' %}
+<area shape="circle" coords="639,619,25" href="{% url "battle" moviemon_name %}" alt="A">
+	{% endifequal %}
+	<area shape="rect" coords="364,595,394,628" href="{% url "up" %}" alt="up">
+		<area shape="rect" coords="364,652,394,688" href="{% url "down" %}" alt="down">
+			<area shape="rect" coords="334,625,364,658" href="{% url "left" %}" alt="left">
+				<area shape="rect" coords="394,625,424,658" href="{% url "right" %}" alt="right">
+
+					<area shape="rect" coords="419,738,469,780" href="{% url "moviedex" %}" alt="select">
+						<area shape="rect" coords="484,738,529,780" href="{% url "options" %}" alt="start">
+							{% endblock %}

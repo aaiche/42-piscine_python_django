@@ -1,0 +1,54 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+	 .case{
+		position: absolute;
+		left: 287px;
+		top: 52px;
+		width: 448px;
+		height: 448px;
+	}
+{% endblock %}
+
+
+{% block title%}
+<title>{{moviemon.title}}</title>
+{% endblock %}
+
+{% block content%}
+<div class='case'>
+	<ul>
+		<li>
+			{{ moviemon.title }}
+		</li>
+		<li>
+			<img src="{{moviemon.img}}" width="100"/>
+		</li>
+		<li>
+			{{ moviemon.director }}
+		</li>
+		<li>
+			{{ moviemon.year }}
+		</li>
+		<li>
+			{{ moviemon.rating }}
+		</li>
+		<li>
+			{{ moviemon.plot }}
+		</li>
+		<li>
+			{{ moviemon.actors }}
+		</li>
+	<ul>
+</div>
+{% endblock %}
+
+{% block control%}
+	B - Back
+{% endblock %}
+
+
+{% block map %}
+	<area shape="circle" coords="576,652,25" href="{% url "moviedex" %}" alt="B">
+{% endblock %}

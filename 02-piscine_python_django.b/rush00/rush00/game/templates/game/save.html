@@ -1,0 +1,112 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+.case{
+position: absolute;
+left: 287px;
+top: 52px;
+width: 448px;
+height: 448px;
+}
+{% endblock %}
+
+
+{% block title%}
+<title>Save</title>
+{% endblock %}
+
+{% block content%}
+<div class='case'>
+	<ul>
+		<li>
+			{% ifequal pos 0 %}
+			-> 
+			{% else %}
+			&nbsp;
+			&nbsp;
+			{% endifequal %}
+			Slot A : 
+			{% if  a %}
+			{% for key, value in a.items %}
+			{% ifequal key 'dex_number' %}
+			{{value}} /
+			{% endifequal %}
+			{% ifequal key 'mons_number' %}
+			{{ value }}
+			{% endifequal %}
+			{% endfor %}
+			{% else %}
+			free
+			{% endif %}
+			<li>
+				{% ifequal pos 1 %}
+				-> 
+				{% else %}
+				&nbsp;
+				&nbsp;
+				{% endifequal %}
+				Slot B : 
+				{% if  b %}
+				{% for key, value in b.items %}
+				{% ifequal key 'dex_number' %}
+				{{value}} /
+				{% endifequal %}
+				{% ifequal key 'mons_number' %}
+				{{ value }}
+				{% endifequal %}
+				{% endfor %}
+				{% else %}
+				free
+				{% endif %}
+				<li>
+					{% ifequal pos 2 %}
+					-> 
+					{% else %}
+					&nbsp;
+					&nbsp;
+					{% endifequal %}
+					Slot C : 
+					{% if c %}
+					{% for key, value in c.items %}
+					{% ifequal key 'dex_number' %}
+					{{value}} /
+					{% endifequal %}
+					{% ifequal key 'mons_number' %}
+					{{ value }}
+					{% endifequal %}
+					{% endfor %}
+					{% else %}
+					free
+					{% endif %}
+				</li>
+				<ul>
+</div>
+{% endblock %}
+
+{% block control %}
+A - Save &nbsp; &nbsp; &nbsp; &nbsp; B - Cancel
+{% endblock %}
+
+{% block map %}
+<script>
+window.addEventListener("keydown", function (evemt) {
+	switch(event.key) {
+		case "ArrowUp": // up
+			window.location.href ="{% url "save_up" %}";
+			break;
+		case "ArrowDown": // down
+			window.location.href ="{% url "save_down" %}";
+			break;
+		default: return; // exit this handler for other keys
+	}
+	e.preventDefault(); // prevent the default action (scroll / move caret)
+});
+</script>
+<area shape="circle" coords="639,619,25" href="{% url "save_A" %}" alt="A">
+	<area shape="circle" coords="576,652,25" href="{% url "save_B" %}" alt="B">
+
+		<area shape="rect" coords="364,595,394,628" href="{% url "save_up" %}" alt="up">
+			<area shape="rect" coords="364,652,394,688" href="{% url "save_down" %}" alt="down">
+
+				{% endblock %}

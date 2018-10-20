@@ -1,0 +1,25 @@
+{% extends 'day05_home.html' %}
+{% block head %}
+<title>day05 ex03</title>
+{% endblock %}
+
+{% block body%}
+<h1>day05 ex03</h1>
+<h2>init: populating ...</h2>
+	return code:
+<ul>
+	{% for item in data %}
+		<li><pre>{{ item }}</pre></li>
+	{% endfor %}
+</ul>
+{% endblock%}
+
+{% block nav%}
+<ul id="nav">
+	<li><a href="/ex03/readme">ex03/readme</a></li>
+	<li><a href="/ex03/populate">ex03/populate</a></li>
+	<li><a href="/ex03/display">ex03/display</a></li>
+	<li><a href="..">Back</a></li>
+
+</ul>
+{% endblock%}

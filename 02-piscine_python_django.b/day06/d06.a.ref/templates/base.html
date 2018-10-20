@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    {% block title%}
+    {% endblock %}
+  </head>
+
+  <body>
+
+  <nav>
+    <h1> Postit </h1>
+    <p> Hello {{ user }} </p>
+    <ul>
+      {% block more_nav %}
+      {% endblock %}
+      {% if is_authenticated %}
+        <li><a href="{% url "deconnexion" %}">Deconnexion</a></li>
+      {% else %}
+        <li><a href="{% url "inscription" %}">Inscription</a></li>
+        <li><a href="{% url "connexion"%}">Connexion</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  {% block content %}
+      {% if is_authenticated %}
+        {% if tips %}
+          <table style="border: 1px solid;">
+            <tr>
+              {% for key, value in tips.0.items %}
+                {% ifequal key 'id' %}
+                {% else %}
+                  <th> {{ key }} </th>
+                {% endifequal %}
+              {% endfor %}
+            </tr>
+            {% for tip in tips %}
+              <tr>
+                {% for key, value in tip.items %}
+                  {% ifequal key 'id' %}
+                  {% else %}
+                    <td> {{ value }} </td>
+                  {% endifequal %}
+                {% endfor %}
+                <td>
+                <form action="{% url "init" %}" method="post">
+                  {% csrf_token %}
+                  <input type='hidden' name='tipid' value='{{ tip.id }}'>
+                  <input type='submit' name='delete' value='delete'>
+                  <input type='submit' name='upvote' value='upvote'>
+                  <input type='submit' name='downvote' value='downvote'>
+                </td>
+                </form>
+              </tr>
+            {% endfor %}
+           </table>
+         {% endif %}
+         <form action="{% url "init" %}" method="post">
+           {% csrf_token %}
+             {{ form.as_p }}
+             <input type="submit" value="Submit" />
+         </form>
+      {% endif %}
+  {% endblock %}
+
+  </body>
+</html>

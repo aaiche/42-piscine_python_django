@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block more_nav %}
+  <li><a href="{% url "init" %}">Home</a></li>
+{% endblock %}
+
+{% block content %}
+
+  <form action="{% url "inscription" %}" method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <input type="submit" value="Submit" />
+  </form>
+
+{% endblock %}

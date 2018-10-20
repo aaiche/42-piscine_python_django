@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>form</title>
+	</head>
+
+	<body>
+		<br /><br />
+		<!--<h2>Formulaire d’envoi d’emails</h2>-->
+		<hr/>
+		<form>
+				Firstname : <input type="text" id="firstname" placeholder="Nicolas"><br />
+
+				Name : <input type="text" id="name" placeholder="Sadirac"><br />
+
+				Age : <input type="number" id="age" step="1" min="18" max="130" placeholder="42"><br />
+
+				Phone : <input type="tel" id="phone" placeholder="06 42 42 42 42"><br />
+
+				Email : <input type="email" id="email" placeholder="ns@42.fr"><br />
+
+				Student at 42 ? : <input type="checkbox" id="student" value="true" checked> <br />
+
+				Male <input type="radio" id="gender_male" name="gender" value="male" value="true" checked>
+				Female <input type="radio" id="gender_female" name="gender" value="female" value="false">
+				Other <input type="radio" id="gender_other" name="gender" value="other" value="false">
+				<br/>
+
+				<!-- quel est la difference: on traite en local ou bien on envoie au serveur -->
+				<!--
+				<input type="submit" value="Run that sexy javascript">
+				<input type="button" value="Run that sexy javascript">
+				-->
+				<!-- quel est la difference entre button et input  -->
+				<button type="button" onclick="displayFormContents()">Run that sexy javascript !</button>
+		</form>
+		<script type"text/javascript" src="popup.js"></script>
+	</body>
+</html>
+

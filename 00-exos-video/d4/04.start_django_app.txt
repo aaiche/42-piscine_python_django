@@ -1,0 +1,24 @@
+# une app avec django: c est un sensembe de fonctionnalites rassemblees dans un sous dossier
+# et qui vont presenter une certaine coherence entre elles. par exple un blog ou un forum qui seront une app
+
+# creer une app
+	(django-test) e1r6p4% ls
+		db.sqlite3			manage.py			mon_premier_projet_django/
+
+	(django-test) e1r6p4%  ./manage.py startapp ma_premiere_application
+
+	(django-test) e1r6p4% ls
+		db.sqlite3			ma_premiere_application/	manage.py			mon_premier_projet_django/
+
+	(django-test) e1r6p4% tree ma_premiere_application
+		ma_premiere_application
+		├── __init__.py			<-- on ne s en soucie pas
+		├── admin.py			<-- sert a la gestion de l interface d administation qui est presente par defaut ds django
+		├── apps.py				<-- on ne s en soucie pas: fait de la configuration avancee qd on manipulera les apps
+		├── migrations			<-- relatifs aux base de donnees
+		│   └── __init__.py
+		├── models.py			<-- sert a representer dans nos objets base de donnes 
+		├── tests.py
+		└── views.py
+
+

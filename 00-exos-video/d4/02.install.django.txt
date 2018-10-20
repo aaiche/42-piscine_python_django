@@ -1,0 +1,32 @@
+# install nouvel envt
+	e1r6p4% virtualenv django-test
+	e1r6p4% source ./django-test/bin/activate
+	(django-test) e1r6p4% which pip
+		/Users/aaiche/wip/piscine_python/video/d4/Environments/django-test/bin/pip
+	(django-test) e1r6p4% pip --version
+		pip 10.0.1 from /Users/aaiche/wip/piscine_python/video/d4/Environments/django-test/lib/python3.6/site-packages/pip (python 3.6)
+	(django-test) e1r6p4% python --version
+		Python 3.6.5
+
+	==> list packages dans cet env
+		django-test) e1r6p4% pip list
+		Package    Version
+		---------- -------
+		pip        10.0.1
+		setuptools 39.2.0
+		wheel      0.31.1
+
+# install django
+	(django-test) e1r6p4% pip install django
+	(django-test) e1r6p4% pip list
+		Package    Version
+		---------- -------
+		pip        10.0.1
+		pytz       2018.4
+		setuptools 39.2.0
+		wheel      0.31.1
+		Django     2.0.6	<----
+
+
+
+

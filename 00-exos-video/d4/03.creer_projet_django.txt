@@ -1,0 +1,120 @@
+# ce que j ai
+	(django-test) e1r6p4% pwd
+		/Users/aaiche/wip/piscine_python/video/d4/Environments
+	(django-test) e1r6p4% ls
+		django-test/		
+	
+	(django-test) e1r6p4% ls django-test/bin/django-admin
+		django-test/bin/django-admin
+	(django-test) e1r6p4% file django-test/bin/django-admin
+		django-test/bin/django-admin: Python script text executable, ASCII text
+
+	(django-test) e1r6p4% cat django-test/bin/django-admin
+		#!/Users/aaiche/wip/piscine_python/video/d4/Environments/django-test/bin/python3.6
+
+		# -*- coding: utf-8 -*-
+		import re
+		import sys
+
+		from django.core.management import execute_from_command_line
+
+		if __name__ == '__main__':
+				sys.argv[0] = re.sub(r'(-script\.pyw?|\.exe)?$', '', sys.argv[0])
+					sys.exit(execute_from_command_line())
+
+# avant de creer projet
+	(django-test) e1r6p4% ls
+	django-test/		
+
+# creer mon_premier_projet_django
+	(django-test) e1r6p4% django-admin startproject mon_premier_projet_django
+	(django-test) e1r6p4% ls
+		django-test/			mon_premier_projet_django/
+
+	(django-test) e1r6p4% ls mon_premier_projet_django
+		manage.py			mon_premier_projet_django/
+
+	(django-test) e1r6p4% tree mon_premier_projet_django
+		mon_premier_projet_django
+		├── manage.py <====================== ptit script(utilitaire) qui permet de faire ...
+		| 										manange.pu runserver ---> permet de lancer le serveur de develpt
+		└── mon_premier_projet_django
+			├── __init__.py					<--- on ne s en occupe pas
+			├── settings.py	<================= CONTIENT TTE La COnfiguration de notre projet. Contient des variables qui vont definir le comportement de mon projet
+			├── urls.py <===================== notre point d entree
+			└── wsgi.py			<--- pour la mise en prod
+
+
+
+
+		(django-test) e1r6p4% ./manage.py
+
+			Type 'manage.py help <subcommand>' for help on a specific subcommand.
+
+			Available subcommands:
+
+		[auth]
+			changepassword
+			createsuperuser
+
+		[contenttypes]
+			remove_stale_contenttypes
+
+		[django]
+			check
+			compilemessages
+			createcachetable
+			dbshell
+			diffsettings
+			dumpdata
+			flush
+			inspectdb
+			loaddata
+			makemessages
+			makemigrations
+			migrate
+			sendtestemail
+			shell
+			showmigrations
+			sqlflush
+			sqlmigrate
+			sqlsequencereset
+			squashmigrations
+			startapp
+			startproject
+			test
+			testserver
+
+		[sessions]
+			clearsessions
+
+		[staticfiles]
+			collectstatic
+			findstatic
+			runserver		<---- lancer la page par defaut
+
+# lancer le serveur de developpement
+
+		(django-test) e1r6p4% netstat -an | egrep -i  listen
+			tcp4       0      0  *.22                   *.*                    LISTEN
+
+		(django-test) e1r6p4% ./manage.py runserver
+			....
+			Django version 2.0.6, using settings 'mon_premier_projet_django.settings'
+			Starting development server at http://127.0.0.1:8000/
+			Quit the server with CONTROL-C.
+		
+
+		e1r6p4% netstat -an | egrep -i listen
+			tcp4       0      0  127.0.0.1.8000         *.*                    LISTEN
+			tcp4       0      0  *.22                   *.*                    LISTEN
+
+# verifier que la page est ok --> WEB browser 
+
+# regarder la bd cree par le server de develpt 
+	(django-test) e1r6p4% pwd
+		/Users/aaiche/wip/piscine_python/video/d4/Environments/mon_premier_projet_django
+	(django-test) e1r6p4% ll -1
+		db.sqlite3	<---- bdd cree par le server de develpt
+		manage.py
+		mon_premier_projet_django/

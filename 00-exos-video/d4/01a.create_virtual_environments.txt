@@ -1,0 +1,148 @@
+# tous mes differents environnements
+	mkdir Environments
+	cd Environments
+	ls
+
+# verifier que nous utilisons mon python3 et virtualenv local
+		e1r6p4% which python3
+		/Users/aaiche/.brew/bin/python3
+
+
+		e1r6p4% which virtualenv
+		/Users/aaiche/.brew/bin/virtualenv
+		e1r6p4%
+
+# quels sont les packages installes
+	e1r6p4% pip3 list
+	Package    Version
+	---------- -------
+	Django     2.0.6
+	pip        10.0.1
+	pytz       2018.4
+	setuptools 39.0.1
+	virtualenv 16.0.0
+	wheel      0.31.0
+
+
+# je cree un nouvel environnement
+	e1r6p4% virtualenv prject1_env
+	Using base prefix '/Users/aaiche/.brew/Cellar/python/3.6.5/Frameworks/Python.framework/Versions/3.6'
+	New python executable in /Users/aaiche/wip/piscine_python/video/d4/Environments/prject1_env/bin/python3.6
+	Also creating executable in /Users/aaiche/wip/piscine_python/video/d4/Environments/prject1_env/bin/python
+	Installing setuptools, pip, wheel...done.
+	e1r6p4%
+
+	==> pip et setuptools wheel sont installes
+
+# je verifie que le repertoire est cree
+	e1r6p4% pwd
+	/Users/aaiche/wip/piscine_python/video/d4/Environments
+	e1r6p4% ls
+	prject1_env/
+	e1r6p4%
+
+# j active ce nouvel environnement
+	e1r6p4% ls prject1_env/bin
+	activate		activate.fish		easy_install		pip			pip3.6			python-config		python3.6
+	activate.csh		activate_this.py	easy_install-3.6	pip3			python			python3			wheel
+	e1r6p4%
+
+	e1r6p4% source ./prject1_env/bin/activate
+	(prject1_env) e1r6p4%
+
+	==> nous sommes ds notre nouvel environnement: cf. le prompt
+
+# je verfie quel est  mon environnement
+	==> je regrade le prompt
+	==> quel est le python et pip que j utilise
+		(prject1_env) e1r6p4% which python
+		/Users/aaiche/wip/piscine_python/video/d4/Environments/prject1_env/bin/python
+	
+		(prject1_env) e1r6p4% which pip3
+		/Users/aaiche/wip/piscine_python/video/d4/Environments/prject1_env/bin/pip3
+		(prject1_env) e1r6p4%
+
+
+	==> je remarque quels sont les packages installees
+		(prject1_env) e1r6p4% pip3 list
+		Package    Version
+		---------- -------
+		pip        10.0.1
+		setuptools 39.2.0
+		wheel      0.31.1
+
+# Pour exporter cet environement que je veux utiliser ds dans un autre enviroement
+# je ne veux utiliser que les dependances locales packages de cet environement et ne pas utiliser ceux globales
+	===> j installe qques packages pour l exple
+	(prject1_env) e1r6p4% pip install numpy
+	(prject1_env) e1r6p4% pip install psutil
+	(prject1_env) e1r6p4% pip install  pytz
+
+	(prject1_env) e1r6p4% pip list
+	Package    Version
+	---------- -------
+	pip        10.0.1
+	setuptools 39.2.0
+	wheel      0.31.1
+	numpy      1.14.3
+	psutil     5.4.5
+	pytz       2018.4
+
+	===> je freeze localement
+			(prject1_env) e1r6p4% pip freeze --local > requirements.txt
+			(prject1_env) e1r6p4% cat requirements.txt
+			numpy==1.14.3
+			psutil==5.4.5
+			pytz==2018.4
+
+# je veux sortir de cet environement et retourner dans le global
+	(prject1_env) e1r6p4% deactivate
+	e1r6p4%
+	e1r6p4%
+	
+	==> je verifie
+	e1r6p4% which python
+	/usr/bin/python
+	e1r6p4%
+
+# je veux me debarrasser de cet environnements
+	e1r6p4% ls
+		prject1_env/		requirements.txt
+	e1r6p4% rm -rf prject1_env
+	e1r6p4% ls
+		requirements.txt
+
+# je veux recreer le meme environnement en utilisant une autre version de python
+	e1r6p4% virtualenv -p /usr/bin/python2.7 py27_env
+	Running virtualenv with interpreter /usr/bin/python2.7
+	New python executable in /Users/aaiche/wip/piscine_python/video/d4/Environments/py27_env/bin/python
+	Installing setuptools, pip, wheel...done.
+
+	e1r6p4% ls
+	py27_env/		requirements.txt
+
+	==> j active cet environnement
+		e1r6p4% source ./py27_env/bin/activate
+		(py27_env) e1r6p4%
+
+	==> quel python j utilise
+		(py27_env) e1r6p4% which python
+			/Users/aaiche/wip/piscine_python/video/d4/Environments/py27_env/bin/python
+		(py27_env) e1r6p4% which pip
+			/Users/aaiche/wip/piscine_python/video/d4/Environments/py27_env/bin/pip
+
+		(py27_env) e1r6p4% python --version
+			Python 2.7.10
+
+	==> je veux recreer les packages sauvegardees ci -dessus dans cet nouvel environnement
+		(py27_env) e1r6p4% pip install -r requirements.txt
+
+		(py27_env) e1r6p4% pip list
+		Package    Version
+		---------- -------
+		pip        10.0.1
+		setuptools 39.2.0
+		wheel      0.31.1
+		numpy      1.14.3
+		psutil     5.4.5
+		pytz       2018.4

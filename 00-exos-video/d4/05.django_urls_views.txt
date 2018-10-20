@@ -1,0 +1,76 @@
+# decouverte de concepts de routes et de vues
+
+# une route : cela va etre la gestion d une url dans notre projet
+# une vue: c est simplement une fonction qui a partir d une requete va me produire une reponse
+et cette reponse va me servir a afficher ma page dans mon navigateur
+
+# voici l url demande  : navigateur http://127.0.0.1:8000/ma_premiere_application
+et on envoie cela a notre projet
+
+	==> django va prendre la requete 
+		il va regarer l url demande
+		puis il va aller dans le fichier :
+			(django-test) e1r6p4% ls mon_premier_projet_django/urls.py
+				mon_premier_projet_django/urls.py
+				==> urls.py contient la gestion de nos routes donc par ou va passer notre requete en fction de la valeur de l url demande
+
+
+		extrait de urls.py:
+		------------------
+		urlpatterns = [
+			path('admin/', admin.site.urls),
+		]
+
+		"""
+			urlpatterns = [
+				url(r^'admin', admin.site.urls),     <--- ceci est une regle pour reagir le comportement des requetes
+				url(r'bar', include('bar.urls')),
+			]
+			url(                    <-- fction
+				r^bar'              <--  motif de l url. Ici c est une expression rationnelle et le motif est une regex qui a le debut 'bar' sans preciser ce qu il derriere
+				include(...)        <-- cela peut etre une vue ou un autre fichier a inclure
+									<-- bar.urls va se trouver ds l application (=module) bar
+			)
+		"""
+
+		===> config video
+		from django.conf.urls import url, include
+		from django.contrib import admin
+
+		urlpatterns = [
+				url('admin/', admin.site.urls),
+			    url(r'bar/', include('bar.urls'))
+		]
+
+
+
+		voici un fichier QUE L ON DOIT creer
+				bar.urls
+
+				(django-test) e1r6p4% cat ma_premiere_application/urls.py
+					from django.conf.urls import url
+
+					from . import views
+
+					urlpatterns = [
+							url('^$', views.bar),       <-- regle ^$: motif correspond a chaine vide
+									<-- views.bar : va etre appliquee: cad l elt bar qui se trouve ds vue
+					]
+
+
+
+# on modifie la vue
+edit ma_premiere_application/views
+	(django-test) e1r6p4% cat views.py
+	from django.shortcuts import render, HttpResponse
+
+# Create your views here.
+
+# ceci est une vue
+	def bar(request):       # <-- prend en paramete une requete
+		return HttpResponse('Bar.')     #<-- produit une reponse
+
+
+
+	# demarrer le server de devlpment:
+		(django-test) e1r6p4% ./manage.py runserver

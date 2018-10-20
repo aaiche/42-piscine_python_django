@@ -1,0 +1,135 @@
+{% extends '../day05_home.html' %}
+{% block head %}
+<title>day05 ex04</title>
+{% endblock %}
+
+{% block body%}
+<h1>day05 ex04</h1>
+<h2>removing ...</h2>
+	return code:
+<!--
+<ul>
+	{% for item in numbers %}
+		<li><pre>{{ item }}</pre></li>
+	{% endfor %}
+</ul>
+-->
+<br/>
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+	<table class="table table-bordered" style="background-color: #f5f5f5;">
+		<tr>
+			<th>Title</th>
+			<th>ID</th>
+		</tr>
+
+		{% if error == "empty" %}
+			<tr>
+					<td rowspan="6">{{ data }}</td>
+			</tr>
+
+			{% else %}
+
+			{% for item in data %}
+			<tr>
+				{% for var in item %}
+				<td>{{ var }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+{% endif %}
+
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+
+		{% if error == "empty" %}
+
+			<pre>{{ data }}</pre>
+
+		{% else %}
+
+			<div class="dropdown">
+			  <span>Remove row</span>
+			  <div class="dropdown-content">
+			    <form method="POST">
+					{% csrf_token %}
+					<ul>
+				{% for item in data %}
+					<li>
+<pre>
+	<input type="radio" name="title" value=="{{ item.1 }}" />
+	{{ item.0 }}
+</pre>
+					</li>
+				{% endfor %}
+					</ul>
+					<div class="input"><input type="submit" value="remove"></div>
+				</form>
+
+		{% endif %}
+
+{% endif %}
+
+<!--
+<div class="dropdown">
+  <span>Remoooooove row</span>
+  <div class="dropdown-content">
+    <form method="POST">
+		{% csrf_token %}
+		<ul>
+	{% for item in data %}
+		<li>
+			<pre>
+				<input type="radio" name="title" value=="{{ item.1 }}" />
+				{{ item.0 }}
+			</pre>
+		</li>
+	{% endfor %}
+		</ul>
+		<div class="input"><input type="submit" value="remove"></div>
+	</form>
+	</div>
+</div>
+-->
+<!--
+	<form action="POST">
+		{% csrf_token %}
+	  <input list="movies" name="movie">
+	  <datalist id="movies">
+			{% for item in data %}
+				<li>
+					<option name="title" value=="{{ item.1 }}">{{item.0}}</option>
+					{{ item }}
+				</li>
+			{% endfor %}
+
+	  </datalist>
+	  <input type="submit" value="remove">
+	</form>
+-->
+
+
+{% endblock%}
+
+{% block nav%}
+<br />
+<br />
+<ul id="nav">
+	<li><a href="/ex04/init">ex04/init</a></li>
+	<li><a href="/ex04/populate">ex04/populate</a></li>
+	<li><a href="/ex04/display">ex04/display</a></li>
+	<li><a href="/ex04/remove">ex04/remove</a></li>
+	<li><a href="..">Back</a></li>
+</ul>
+{% endblock%}

@@ -1,0 +1,127 @@
+{% extends '../day05_home.html' %}
+{% block head %}
+<title>day05 ex07</title>
+{% endblock %}
+
+{% block body%}
+<h1>day05 ex07</h1>
+<h2>upating ...</h2>
+	return code:
+<!--
+<ul>
+	{% for item in numbers %}
+		<li><pre>{{ item }}</pre></li>
+	{% endfor %}
+</ul>
+-->
+<br/>
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+	<table class="table table-bordered" style="background-color: #f5f5f5;">
+		<tr>
+			<th>Title</th>
+			<th>Episode_nb</th>
+			<th>Opening_crawl</th>
+			<th>Created</th>
+			<th>Updated</th>
+		</tr>
+
+		{% if error == "empty" %}
+			<tr>
+					<td rowspan="5">{{ data }}</td>
+			</tr>
+
+			{% else %}
+
+			{% for item in data %}
+			<tr>
+				{% for var in item %}
+				<td>{{ var }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+{% endif %}
+
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+
+		{% if error == "empty" %}
+
+			<pre>{{ data }}</pre>
+
+		{% else %}
+
+			<div class="dropdown">
+			  <span>Select row:</span>
+			  <div class="dropdown-content">
+			    <form method="POST">
+						{% csrf_token %}
+						<ul>
+							{% for item in data %}
+								<li>
+<pre>
+<input type="radio" name="title" value="{{ item.1 }}" />
+{{ item.0 }}
+</pre>
+								</li>
+							{% endfor %}
+						</ul>
+						<div class="input">
+							<input type="text" name="opening_crawl" style="width:400px;height:100px; background:white">
+						</div>
+						<br />
+						<div class="input"><input type="submit" value="udpate opening_crawl"></div>
+				</form>
+
+				<br/>
+				<br/>
+				<div class="dropdown">
+					<span>A ce qui il parait il faut faire une liste, alors...:</span>
+					<form method="POST">
+					{% csrf_token %}
+						<fieldset>
+							<select name="title" style="width:198px">
+								{% for item in data %}
+									<option {{ TOTOTO }}>{{ item.1 }}: {{ item.0 }}</option>
+								{% endfor %}
+							</select><br/>
+							<label for="opening_crawl">opening_crawl:</label><br/>
+							<input type="text" name="opening_crawl" style="width:400px;height:100px; background:white"><br/><br/>
+							<input type="submit" value="udpate opening_crawl">
+						</fieldset>
+					</form>
+				</div>
+
+		{% endif %}
+
+{% endif %}
+
+
+
+
+
+
+{% endblock%}
+
+{% block nav%}
+<br />
+<br />
+<ul id="nav">
+	<li><a href="/ex07/readme">ex07/readme</a></li>
+	<li><a href="/ex07/populate">ex07/populate</a></li>
+	<li><a href="/ex07/display">ex07/display</a></li>
+	<li><a href="/ex07/update">ex07/update</a></li>
+	<li><a href="..">Back</a></li>
+</ul>
+{% endblock%}

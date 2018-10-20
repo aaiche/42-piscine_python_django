@@ -1,0 +1,24 @@
+{% extends "ex02/base.html" %}
+
+{% block content %}
+<div style=style="width:200px;background:white" onmouseover="this.style.background='LightCyan';" onmouseout="this.style.background='white';">
+  <form method = "POST">
+    {% csrf_token %} <!-- ptite securite pour verifier qu il n y a pas de fraude au niveau du formulaire pour authentifier la requete -->
+    {{ form }}       <!-- le formulaire sera genere autoamtiquement sous forme de html -->
+    <input type="submit" value="Submit">  <!-- button pour valider -->
+  </form>
+</div>
+<hr>
+<div style=style="width:200px;background:white" onmouseover="this.style.background='AntiqueWhite ';" onmouseout="this.style.background='white';">
+  <h1>l’historique:</h1>
+  {% for msg in historique %}
+  <ul>
+    <li>
+      {{ msg }}
+    </li>
+  </ul>
+  {% endfor %}
+</div>
+<hr>
+
+{% endblock %}

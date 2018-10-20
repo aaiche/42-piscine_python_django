@@ -1,0 +1,142 @@
+{% extends '../day05_home.html' %}
+{% block head %}
+<title>day05 ex06</title>
+{% endblock %}
+
+{% block body%}
+<h1>day05 ex06</h1>
+<h2>upating ...</h2>
+	return code:
+<!--
+<ul>
+	{% for item in numbers %}
+		<li><pre>{{ item }}</pre></li>
+	{% endfor %}
+</ul>
+-->
+<br/>
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+	<table class="table table-bordered" style="background-color: #f5f5f5;">
+		<tr>
+			<th>Title</th>
+			<th>Episode_nb</th>
+			<th>Opening_crawl</th>
+			<th>Created</th>
+			<th>Updated</th>
+		</tr>
+
+		{% if error == "empty" %}
+			<tr>
+					<td rowspan="5">{{ data }}</td>
+			</tr>
+
+			{% else %}
+
+			{% for item in data %}
+			<tr>
+				{% for var in item %}
+				<td>{{ var }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+{% endif %}
+
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+
+		{% if error == "empty" %}
+
+			<pre>{{ data }}</pre>
+
+		{% else %}
+
+			<div class="dropdown">
+			  <span>Select row:</span>
+			  <div class="dropdown-content">
+			    <form method="POST">
+						{% csrf_token %}
+						<ul>
+							{% for item in data %}
+								<li>
+<pre>
+<input type="radio" name="title" value="{{ item.1 }}" />
+{{ item.0 }}
+</pre>
+								</li>
+							{% endfor %}
+						</ul>
+						<div class="input">
+							<input type="text" name="opening_crawl" style="width:400px;height:100px; background:white">
+						</div>
+						<br />
+						<div class="input"><input type="submit" value="udpate opening_crawl"></div>
+				</form>
+
+		{% endif %}
+
+{% endif %}
+
+<!--
+<div class="dropdown">
+  <span>Remoooooove row</span>
+  <div class="dropdown-content">
+    <form method="POST">
+		{% csrf_token %}
+		<ul>
+	{% for item in data %}
+		<li>
+			<pre>
+				<input type="radio" name="title" value=="{{ item.1 }}" />
+				{{ item.0 }}
+			</pre>
+		</li>
+	{% endfor %}
+		</ul>
+		<div class="input"><input type="submit" value="remove"></div>
+	</form>
+	</div>
+</div>
+-->
+<!--
+	<form action="POST">
+		{% csrf_token %}
+	  <input list="movies" name="movie">
+	  <datalist id="movies">
+			{% for item in data %}
+				<li>
+					<option name="title" value=="{{ item.1 }}">{{item.0}}</option>
+					{{ item }}
+				</li>
+			{% endfor %}
+
+	  </datalist>
+	  <input type="submit" value="remove">
+	</form>
+-->
+
+
+{% endblock%}
+
+{% block nav%}
+<br />
+<br />
+<ul id="nav">
+	<li><a href="/ex06/init">ex06/init</a></li>
+	<li><a href="/ex06/populate">ex06/populate</a></li>
+	<li><a href="/ex06/display">ex06/display</a></li>
+	<li><a href="/ex06/update">ex06/update</a></li>
+	<li><a href="..">Back</a></li>
+</ul>
+{% endblock%}

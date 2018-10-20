@@ -1,0 +1,5 @@
+title = "Voici mon titre de la page"
+name = "Voici mon Nom"
+firstname = "Voici mon Prenom"
+age = "Voici mon age 99 - peut etre que l on peut verifier si int ou pas. Mais helas pas le temps!!"
+job = "Voici ma Profession"

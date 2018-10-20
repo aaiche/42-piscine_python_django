@@ -1,0 +1,62 @@
+{% extends 'day05_home.html' %}
+{% block head %}
+<title>day05 ex05</title>
+{% endblock %}
+
+{% block body%}
+<h1>day05 ex05</h1>
+<h2>displaying ...</h2>
+	return code:
+<!--
+<ul>
+	{% for item in numbers %}
+		<li><pre>{{ item }}</pre></li>
+	{% endfor %}
+</ul>
+-->
+<br/>
+{% if error == "yes" %}
+
+	<!--<p> {{ error}} </p> -->
+	<pre> {{ data }} </pre>
+
+{% else %}
+	<table class="table table-bordered" style="background-color: #f5f5f5;">
+		<tr>
+			<th>Title</th>
+			<th>ID</th>
+			<th>Open</th>
+			<th>Director</th>
+			<th>Producer(s)</th>
+			<th>Released</th>
+		</tr>
+
+		{% if error == "empty" %}
+			<tr>
+					<td rowspan="6">{{ data }}</td>
+			</tr>
+
+			{% else %}
+
+			{% for item in data %}
+			<tr>
+				{% for var in item %}
+				<td>{{ var }}</td>
+				{% endfor %}
+			</tr>
+			{% endfor %}
+		{% endif %}
+	</table>
+
+{% endif %}
+{% endblock%}
+
+{% block nav%}
+<ul id="nav">
+	<li><a href="/ex05/readme">ex05/readme</a></li>
+	<li><a href="/ex05/populate">ex05/populate</a></li>
+	<li><a href="/ex05/display">ex05/display</a></li>
+	<li><a href="/ex05/remove">ex05/remove</a></li>
+	<li><a href="..">Back</a></li>
+</ul>
+{% endblock%}

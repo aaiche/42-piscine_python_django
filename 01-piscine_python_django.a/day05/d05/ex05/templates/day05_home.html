@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    {% block head %}
+    <title>day05 home</title>
+    {% endblock%}
+  </head>
+
+  <body>
+    <div class="container">
+      {% block body %}
+      <h1>Day05 home</h1>
+      {% endblock%}
+
+
+      <!-- {% include "day05_nav.html" %} -->
+
+      {% block nav%}
+      <ul id="nav">
+      	<li><a href="/ex00/init">ex00/init</a></li>
+      	<li><a href="/ex01/models">ex01/models</a></li>
+      	<li><a href="/ex02/init">ex02/init</a></li>
+        <li><a href="/ex02/populate">ex02/populate</a></li>
+        <li><a href="/ex02/display">ex02/display</a></li>
+        <li><a href="/ex03/readme">ex03/readme</a></li>
+        <li><a href="/ex03/populate">ex03/populate</a></li>
+        <li><a href="/ex03/display">ex03/display</a></li>
+        <li><a href="/ex04/init">ex04/init</a></li>
+        <li><a href="/ex04/populate">ex04/populate</a></li>
+        <li><a href="/ex04/display">ex04/display</a></li>
+        <li><a href="/ex04/remove">ex04/remove</a></li>
+        <li><a href="/ex05/readme">ex05/readme</a></li>
+        <li><a href="/ex05/populate">ex05/populate</a></li>
+        <li><a href="/ex05/display">ex05/display</a></li>
+        <li><a href="/ex05/remove">ex05/remove</a></li>
+      </ul>
+
+      {% endblock%}
+
+    </div>
+  </body>
+
+</html>

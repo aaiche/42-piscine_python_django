@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+  <head>
+    <meta charset="utf-8">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+	<style>
+	.control {
+		position: absolute;
+		left: 287px;
+		top: 500px;
+		width: 448px;
+		height: 55px;
+		background: url("{% static 'img/gray_screen.jpg' %}") repeat;
+	}
+	{% block style %}
+	{% endblock %}
+	</style>
+	{% block title%}
+  		<title>Gameboy</title>
+	{% endblock %}
+  </head>
+
+  <body>
+	<img id="gameboy" alt="gameboy" src="{% static 'img/gameboy.jpg' %}" usemap="#gameboy" />
+	<img id="gray_screen" alt="gray_screen" src="{% static 'img/gray_screen.jpg' %}"/>
+	{% block content %}
+	<div class='case'>
+	{% endblock %}
+	</div>
+	<div class='control'>{% block control %}A - New game <br> B - Load {% endblock %}</div>
+	<map name="gameboy">
+
+  {% block map %}
+		<area shape="circle" coords="639,619,25" href="{% url "worldmap" %}" alt="A">
+		<area shape="circle" coords="576,652,25" href="{% url "load" %}" alt="B">
+  {% endblock %}
+	</map>
+
+  </body>
+</html>

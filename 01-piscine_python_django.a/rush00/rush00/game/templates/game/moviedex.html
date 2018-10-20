@@ -1,0 +1,51 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+	 .case{
+		position: absolute;
+		left: 287px;
+		top: 52px;
+		width: 448px;
+		height: 448px;
+	}
+	li {
+		display: inline-block;
+		margin: 10px;
+	}
+{% endblock %}
+
+
+{% block title%}
+  	<title>Save</title>
+{% endblock %}
+
+{% block content%}
+<div class='case'>
+	<ul>
+		{% for movie in moviedex %}
+		<li>
+			<img  {% ifequal forloop.counter pos %} style="border: 3px solid blue" {% endifequal %} src="{{movie.img}}" width="50"/>
+		</li>
+		{% empty %}
+		Moviedex is empty
+		{% endfor %}
+	</ul>
+</div>
+{% endblock %}
+
+{% block control %}
+A - More information &nbsp; &nbsp; &nbsp; &nbsp; select - Back
+{% endblock %}
+
+{% block map %}
+{% ifequal name '' %}
+{% else %}
+	<area shape="circle" coords="639,619,25" href="{% url "details" name %}" alt="A">
+	<area shape="rect" coords="364,595,394,628" href="{% url "moviedex_up" %}" alt="up">
+	<area shape="rect" coords="364,652,394,688" href="{% url "moviedex_down" %}" alt="down">
+{% endifequal %}
+	
+	<area shape="rect" coords="419,738,469,780" href="{% url "worldmap" %}" alt="select">
+
+{% endblock %}

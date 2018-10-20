@@ -1,0 +1,121 @@
+{% extends "game/base.html"  %}
+{% load static %}
+
+{% block style %}
+	 .case{
+		position: absolute;
+		left: 287px;
+		top: 52px;
+		width: 448px;
+		height: 448px;
+	}
+{% endblock %}
+
+
+{% block title%}
+  	<title>Load</title>
+{% endblock %}
+
+{% block content%}
+<div class='case'>
+	<ul>
+		<li>
+			{% ifequal pos 0 %}
+			-> 
+			{% else %}
+				&nbsp;
+				&nbsp;
+			{% endifequal %}
+			Slot A : 
+		{% if  a %}
+			{% for key, value in a.items %}
+				{% ifequal key 'dex_number' %}
+					{{value}} /
+				{% endifequal %}
+				{% ifequal key 'mons_number' %}
+					{{ value }}
+				{% endifequal %}
+			{% endfor %}
+		{% else %}
+			free
+		{% endif %}
+		<li>
+			{% ifequal pos 1 %}
+			-> 
+			{% else %}
+				&nbsp;
+				&nbsp;
+			{% endifequal %}
+			Slot B : 
+		{% if  b %}
+			{% for key, value in b.items %}
+				{% ifequal key 'dex_number' %}
+					{{value}} /
+				{% endifequal %}
+				{% ifequal key 'mons_number' %}
+					{{ value }}
+				{% endifequal %}
+			{% endfor %}
+		{% else %}
+			free
+		{% endif %}
+		<li>
+			{% ifequal pos 2 %}
+			-> 
+			{% else %}
+				&nbsp;
+				&nbsp;
+			{% endifequal %}
+			Slot C : 
+		{% if c %}
+			{% for key, value in c.items %}
+				{% ifequal key 'dex_number' %}
+					{{value}} /
+				{% endifequal %}
+				{% ifequal key 'mons_number' %}
+					{{ value }}
+				{% endifequal %}
+			{% endfor %}
+		{% else %}
+			free
+		{% endif %}
+		</li>
+	<ul>
+</div>
+{% endblock %}
+
+{% block control %}
+{% if loader %}
+A - Start
+{%else %}
+A - Load &nbsp; &nbsp; &nbsp; &nbsp; B - Cancel
+{% endif %}
+{% endblock %}
+
+{% block map %}
+	{% if loader %}
+		<area shape="circle" coords="639,619,25" href="{% url "worldmap" %}" alt="A">
+	{% else %}
+	{% if  a %}
+		{% ifequal pos 0 %}
+		<area shape="circle" coords="639,619,25" href="{% url "load_A" %}" alt="A">
+		{% endifequal %}
+	{% endif %}
+	{% if  b %}
+		{% ifequal pos 1 %}
+		<area shape="circle" coords="639,619,25" href="{% url "load_A" %}" alt="A">
+		{% endifequal %}
+	{% endif %}
+	{% if  c %}
+		{% ifequal pos 2 %}
+		<area shape="circle" coords="639,619,25" href="{% url "load_A" %}" alt="A">
+		{% endifequal %}
+	{% endif %}
+	<area shape="circle" coords="576,652,25" href="{% url "init" %}" alt="B">
+
+	<area shape="rect" coords="364,595,394,628" href="{% url "load_up" %}" alt="up">
+	<area shape="rect" coords="364,652,394,688" href="{% url "load_down" %}" alt="down">
+
+	{% endif %}
+
+{% endblock %}
